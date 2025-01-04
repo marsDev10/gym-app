@@ -48,7 +48,7 @@ app.use('/users', Users);
 app.use('/routines', Routines);
 
 app.get("/", (_req, res) => {
-  res.send("Conectado a Xperience :D");
+  res.send("Conectado a GymApp :D");
 });
 
 

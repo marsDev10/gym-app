@@ -1,8 +1,6 @@
-import { AppDataSource } from '../../database/mongoDB.js';
-import { User } from '../../models/user.js';
-import { IUser, TLoginUser } from '../../interfaces/user.js';
-import bcrypt from 'bcrypt';
-import { getUserByEmail, getUserWithSelectedDataByEmail, validateLogin } from '../user/user.read.controller.js';
+import { TLoginUser } from '../../interfaces/user.js';
+import jwt from "jsonwebtoken";
+import { getUserWithSelectedDataByEmail, validateLogin } from '../user/user.read.controller.js';
 import { GymAppError } from '../../interfaces/error.js';
 
 
@@ -29,8 +27,17 @@ export const loginUser = async (dataUser: TLoginUser) => {
       status: 400,
     });
 
+    const { password, ...userTokeData } = userToLogin;
 
-    return userToLogin;
+  const token = jwt.sign({ tokenUser: userTokeData }, process.env.CODIGO!, {
+    expiresIn: "8h",
+  });
+
+
+    return {
+        token,
+        ...userToLogin
+    };
 }
 
 

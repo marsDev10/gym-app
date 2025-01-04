@@ -16,13 +16,14 @@ router.post(
 
     return res.status(200).json({
       status: 200,
-      ...userLoginData,
+      message: "User logged in successfully",
+      user: {
+        ...userLoginData,
+      }
     });
   } catch (error) {
     next(error);
   }
-
-
 });
 
 export default router;

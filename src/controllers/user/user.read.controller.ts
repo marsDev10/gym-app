@@ -56,11 +56,10 @@ export const getUserByEmail = async (email: string) => {
  */
 export async function getUserWithSelectedDataByEmail(
     email: string,
-    withDeleted = false,
   ) {
     const userData = await userRepository.findOneBy({
       where: { email },
-      select: ["name"]
+      select: ["name", "email"]
     });
   
     if (!userData)
