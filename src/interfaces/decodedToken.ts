@@ -7,7 +7,7 @@ import { ObjectId } from "mongodb";
 export interface DecodedToken extends JwtPayload {
     tokenUser: {
       _id?: ObjectId;
-      email: string;
+      email?: string;
       name?: string;
     };
   }

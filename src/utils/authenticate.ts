@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
+import { DecodedToken } from "../interfaces/decodedToken.js";
 import { GymAppError } from "../interfaces/error.js";
 import jwt from "jsonwebtoken";
-import { DecodedToken } from "../interfaces/decodedToken.js";
 import { getUserByEmail } from "../controllers/user/user.read.controller.js";
 
 /**
@@ -32,7 +32,11 @@ export async function Authenticated(
           name: "Authenticate",
           status: 400,
         });
-  
+
+      req._id = decodedToken.tokenUser._id;
+      req.name = decodedToken.tokenUser.name;
+      req.email = decodedToken.tokenUser.email;
+
       const userToAuthenticated = await getUserByEmail(req?.body?.email);
   
       if (!userToAuthenticated)

@@ -7,13 +7,12 @@ const routinesRepository = AppDataSource.getMongoRepository(Routine);
 
 export const getRoutineByUser = async (userId: string) => {
 
-        console.log({ userId });
 
         // Realiza la búsqueda de rutinas asociadas al usuario
         const userWithRoutines = await routinesRepository.find({
             relations: ["user"],
             where: {
-                "user.name": { $eq: userId },
+                "user._id": { $eq: userId },
             },
         });
 

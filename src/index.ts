@@ -1,10 +1,8 @@
 import  dotenv  from 'dotenv';
 import "reflect-metadata";
+dotenv.config();
 import cors from "cors";
 import { handleGenericError, handleGymAppError, handleJWTError, handleValidatorError } from './utils/error.js';
-
-dotenv.config();
-
 import express, { Application, Request, Response, NextFunction } from "express";
 import { AppDataSource } from './database/mongoDB.js';
 
