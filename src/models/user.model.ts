@@ -5,6 +5,8 @@ import {
   CreateDateColumn,
   OneToMany,
   ObjectIdColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Progress } from './progress.model.js';
 import { IsEmail } from 'class-validator';
@@ -55,8 +57,21 @@ export class User {
   })
   privilege: number;
 
+  @Column({
+    name: "isActive",
+    default: true,
+    type: 'int',
+  })
+  isActive: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date | null;
 
   @OneToMany(() => Progress, (progress) => progress.user)
   progress: Progress[];
