@@ -3,6 +3,7 @@ import { getRoutineByUser } from "../controllers/routines/routines.read.controll
 import { validatePrivileges } from "../middlewares/privileges.middleware.js";
 import { Privileges } from "../enums/privileges.enum.js";
 import { Authenticated } from "../middlewares/authenticate.middleware.js";
+import { requestLogger } from "../middlewares/requestLogger.middleware.js";
 
 const router = Router();
 

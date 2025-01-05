@@ -52,6 +52,28 @@ export const getUserByEmail = async (email: string | undefined) => {
 }
 
 /**
+ * Regresa los datos del usuario a partir del correo
+ */
+export const isDuplucatedUser = async (email: string | undefined): Promise<boolean> => {
+  try {
+
+      const user = await userRepository.findOneBy({
+          email,
+      });
+
+      if(!user){
+        return false;
+      }
+
+      return true;
+
+  } catch (error) {
+      console.error("Error al crear usuario:", error);
+      return false;
+  }
+}
+
+/**
  * Returns the user info selected using his/her id
  */
 export async function getUserWithSelectedDataByEmail(

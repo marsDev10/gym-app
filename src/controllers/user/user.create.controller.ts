@@ -6,6 +6,7 @@ import { encryptPassword } from "../../utils/crypt.utils.js";
 const userRepository = AppDataSource.getMongoRepository(User);
 
 export const createUser = async (dataUser: TCreateUser) => {
+    
         const user = await userRepository.findOneBy({
             email: dataUser.email,
         });
@@ -23,7 +24,5 @@ export const createUser = async (dataUser: TCreateUser) => {
             return savedUser;
 
         }
-        // Verificar si el usuario ya existe
-        console.log({ user });
 }
 

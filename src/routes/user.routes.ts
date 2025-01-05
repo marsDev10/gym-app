@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { IUser } from "../interfaces/user.interface.js";
 import { createUser } from "../controllers/user/user.create.controller.js";
 import { validatePrivileges } from "../middlewares/privileges.middleware.js";
+import { registerUser } from "../controllers/auth/register.create.controller.js";
 
 const router = Router();
 
@@ -11,7 +12,7 @@ router.post("/register",
 
       const dataUser: IUser = req.body;
 
-        const user = await createUser(dataUser);
+        const user = await registerUser(dataUser);
  
         res
         .status(201)

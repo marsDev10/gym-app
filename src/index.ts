@@ -12,6 +12,10 @@ import Auth from './routes/auth.routes.js';
 import Users from './routes/user.routes.js';
 import Routines from './routes/routines.routes.js';
 import bodyParser from 'body-parser';
+import { requestLogger } from './middlewares/requestLogger.middleware.js';
+import logger from './utils/logger.utils.js';
+import { errorHandler } from './middlewares/errorHandler.middleware.js';
+import { Authenticated } from './middlewares/authenticate.middleware.js';
 
 (async () => {
   try {
@@ -41,7 +45,19 @@ app.use(express.json());
 app.use(express.text());
 
 
+
+
+
 app.use('/auth', Auth);
+
+app.use(Authenticated);
+app.use(requestLogger);
+app.use(errorHandler);
+app.use(handleJWTError);
+app.use(handleValidatorError);
+app.use(handleGymAppError);
+app.use(handleGenericError);
+
 app.use('/users', Users);
 app.use('/routines', Routines);
 
@@ -49,14 +65,9 @@ app.get("/", (_req, res) => {
   res.send("Conectado a GymApp :D");
 });
 
-
-app.use(handleJWTError);
-app.use(handleValidatorError);
-app.use(handleGymAppError);
-app.use(handleGenericError);
-
 app.listen(PORT, () => { 
-  console.log("Server running at PORT: ", PORT); 
+  console.log("Server running at PORT: ", PORT);
+  logger.info("Servidor escuchando en http://localhost:3000");
 }).on("error", (error) => {
   // gracefully handle error
   throw new Error(error.message);
