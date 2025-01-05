@@ -5,7 +5,7 @@ import {
     ManyToOne,
     ObjectIdColumn,
   } from 'typeorm';
-  import { Routine } from './routine.js';
+  import { Routine } from './routine.model.js';
 import { ObjectId } from 'mongodb';
   
   @Entity()

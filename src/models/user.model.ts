@@ -6,10 +6,10 @@ import {
   OneToMany,
   ObjectIdColumn,
 } from 'typeorm';
-import { Progress } from './progress.js';
+import { Progress } from './progress.model.js';
 import { IsEmail } from 'class-validator';
 import { ObjectId } from 'mongodb';
-import { Routine } from './routine.js';
+import { Routine } from './routine.model.js';
 
 @Entity()
 export class User {
@@ -47,6 +47,13 @@ export class User {
 
   @Column({ type: 'float', nullable: true })
   height: number;
+
+  @Column({ 
+    name: "privilege",
+    nullable: false,
+    type: "int"
+  })
+  privilege: number;
 
   @CreateDateColumn()
   createdAt: Date;

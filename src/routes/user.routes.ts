@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { IUser } from "../interfaces/user.js";
+import { IUser } from "../interfaces/user.interface.js";
 import { createUser } from "../controllers/user/user.create.controller.js";
+import { validatePrivileges } from "../middlewares/privileges.middleware.js";
 
 const router = Router();
 
-router.post("/register", async (req: Request, res: Response, _next: NextFunction) => {
+router.post("/register", 
+  async (req: Request, res: Response, _next: NextFunction) => {
     try {
 
       const dataUser: IUser = req.body;

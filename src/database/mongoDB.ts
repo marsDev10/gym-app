@@ -3,10 +3,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { DataSource } from "typeorm"
-import { User } from "../models/user.js";
-import { Routine } from "../models/routine.js";
-import { Exercise } from "../models/exercise.js";
-import { Progress } from "../models/progress.js";
+import { User } from "../models/user.model.js";
+import { Routine } from "../models/routine.model.js";
+import { Exercise } from "../models/exercise.model.js";
+import { Progress } from "../models/progress.model.js";
 
 export const AppDataSource = new DataSource({
     type: "mongodb",

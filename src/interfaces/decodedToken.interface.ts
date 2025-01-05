@@ -9,6 +9,7 @@ export interface DecodedToken extends JwtPayload {
       _id?: ObjectId;
       email?: string;
       name?: string;
+      privilege?: number;
     };
   }
   

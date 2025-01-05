@@ -1,9 +1,9 @@
 import { AppDataSource } from "../../database/mongoDB.js";
-import { User } from "../../models/user.js";
-import { TCreateUser, TUpdateUser } from "../../interfaces/user.js";
+import { User } from "../../models/user.model.js";
+import { TCreateUser, TUpdateUser } from "../../interfaces/user.interface.js";
 import bcrypt from 'bcrypt';
-import { encryptPassword } from "../../utils/crypt.js";
-import { GymAppError } from "../../interfaces/error.js";
+import { encryptPassword } from "../../utils/crypt.utils.js";
+import { GymAppError } from "../../interfaces/error.interface.js";
 
 const userRepository = AppDataSource.getMongoRepository(User);
 
@@ -37,7 +37,7 @@ export async function validateLogin(
 /**
  * Regresa los datos del usuario a partir del correo
  */
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (email: string | undefined) => {
     try {
 
         const user = await userRepository.findOneBy({
@@ -59,8 +59,10 @@ export async function getUserWithSelectedDataByEmail(
   ) {
     const userData = await userRepository.findOneBy({
       where: { email },
-      select: ["name", "email"]
+      select: ["name", "email", "privilege"]
     });
+
+    console.log({ userData });
   
     if (!userData)
       throw new GymAppError({

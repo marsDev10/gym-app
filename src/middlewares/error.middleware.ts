@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { GymAppError } from "../interfaces/error.js";
+import { GymAppError } from "../interfaces/error.interface.js";
 import { ValidationError } from "class-validator";
 import jwt from "jsonwebtoken";
 import axios from "axios";

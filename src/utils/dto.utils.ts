@@ -1,7 +1,7 @@
 import { instanceToPlain, plainToInstance } from "class-transformer";
 import { validate } from "class-validator";
 import { NextFunction, Request, Response } from "express";
-import { GymAppError } from "../interfaces/error.js";
+import { GymAppError } from "../interfaces/error.interface.js";
 import { Sanitizable } from "../dto/satinizable.dto.js";
 
 export const validateDto = <T extends Sanitizable>(

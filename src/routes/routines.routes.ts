@@ -1,9 +1,19 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { getRoutineByUser } from "../controllers/routines/routines.read.controller.js";
+import { validatePrivileges } from "../middlewares/privileges.middleware.js";
+import { Privileges } from "../enums/privileges.enum.js";
+import { Authenticated } from "../middlewares/authenticate.middleware.js";
 
 const router = Router();
 
-router.get("/:userId", async (_req: Request, res: Response, next: NextFunction) => {
+router.get("/:userId",     
+    Authenticated,
+    validatePrivileges([
+    Privileges.Admin,
+    Privileges.Partner,
+    Privileges.Customer,
+  ]),
+  async (_req: Request, res: Response, next: NextFunction) => {
     try {
 
         const { userId } = _req.params;

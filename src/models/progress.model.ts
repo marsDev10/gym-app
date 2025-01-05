@@ -7,8 +7,8 @@ import {
     UpdateDateColumn,
     ObjectIdColumn,
   } from 'typeorm';
-  import { User } from './user.js';
-  import { Routine } from './routine.js';
+  import { User } from './user.model.js';
+  import { Routine } from './routine.model.js';
 import { ObjectId } from 'mongodb';
   
   @Entity()

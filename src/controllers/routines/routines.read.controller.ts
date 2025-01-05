@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../database/mongoDB.js";
-import { User } from "../../models/user.js";
-import { Routine } from "../../models/routine.js";
+import { User } from "../../models/user.model.js";
+import { Routine } from "../../models/routine.model.js";
 
 const userRepository = AppDataSource.getRepository(User);
 const routinesRepository = AppDataSource.getMongoRepository(Routine);

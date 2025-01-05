@@ -7,10 +7,10 @@ import {
     ObjectIdColumn,
     ManyToOne,
   } from 'typeorm';
-  import { Progress } from './progress.js';
-  import { Exercise } from './exercise.js';
+  import { Progress } from './progress.model.js';
+  import { Exercise } from './exercise.model.js';
 import { ObjectId } from 'mongodb';
-import { User } from './user.js';
+import { User } from './user.model.js';
   
   @Entity()
   export class Routine {

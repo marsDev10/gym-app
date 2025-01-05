@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { loginUser } from "../controllers/auth/login.controller.js";
 import { LoginDto } from "../dto/auth/login.js";
-import { validateDto } from "../utils/dto.js";
+import { validateDto } from "../utils/dto.utils.js";
 
 const router = Router();
 

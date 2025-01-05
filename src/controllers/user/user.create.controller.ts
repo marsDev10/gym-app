@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../database/mongoDB.js";
-import { User } from "../../models/user.js";
-import { TCreateUser } from "../../interfaces/user.js";
-import { encryptPassword } from "../../utils/crypt.js";
+import { User } from "../../models/user.model.js";
+import { TCreateUser } from "../../interfaces/user.interface.js";
+import { encryptPassword } from "../../utils/crypt.utils.js";
 
 const userRepository = AppDataSource.getMongoRepository(User);
 

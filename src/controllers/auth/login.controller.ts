@@ -1,7 +1,7 @@
-import { TLoginUser } from '../../interfaces/user.js';
+import { TLoginUser } from '../../interfaces/user.interface.js';
 import jwt from "jsonwebtoken";
 import { getUserWithSelectedDataByEmail, validateLogin } from '../user/user.read.controller.js';
-import { GymAppError } from '../../interfaces/error.js';
+import { GymAppError } from '../../interfaces/error.interface.js';
 
 
 export const loginUser = async (dataUser: TLoginUser) => {
