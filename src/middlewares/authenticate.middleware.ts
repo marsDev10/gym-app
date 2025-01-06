@@ -19,11 +19,11 @@ export async function Authenticated(
       if (!token) {
         return res.status(400).json({
           status: 400,
-          error: "Usuario no autenticado",
+          message: "Usuario no autenticado",
         });
       }
   
-      const decodedToken = jwt.verify(token, process.env.codigo!) as DecodedToken;
+      const decodedToken = jwt.verify(token, process.env.CODIGO!) as DecodedToken;
   
       // Token verification successfully
       if (!decodedToken.tokenUser)

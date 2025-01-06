@@ -36,7 +36,7 @@ const PORT = process.env.PORT || 3001;
 const corsOptions = {
   origin: "*",
   methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "user-agent", "api-key"],
+  allowedHeaders: ["Content-Type", "Authorization", "user-agent", "x-api-key"],
   credentials: true,
 };
 

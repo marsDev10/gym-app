@@ -8,7 +8,6 @@ import { requestLogger } from "../middlewares/requestLogger.middleware.js";
 const router = Router();
 
 router.get("/:userId",     
-    Authenticated,
     validatePrivileges([
     Privileges.Admin,
     Privileges.Partner,
