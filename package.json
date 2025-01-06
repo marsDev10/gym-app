@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx tsx watch src/index.ts",
-    "create-user": "npx tsx src/scripts/createUser.ts"
+    "create-user": "npx tsx src/scripts/createUser.ts",
+    "generate-apikey": "npx tsx src/scripts/genereteApiKey.script.ts"
   },
   "keywords": [],
   "author": "MarsDev <themarswtf@outlook.es>",

@@ -7,6 +7,7 @@ import { User } from "../models/user.model.js";
 import { Routine } from "../models/routine.model.js";
 import { Exercise } from "../models/exercise.model.js";
 import { Progress } from "../models/progress.model.js";
+import { ApiKey } from "../models/apikeys.model.js";
 
 export const AppDataSource = new DataSource({
     type: "mongodb",
@@ -19,7 +20,8 @@ export const AppDataSource = new DataSource({
         User, 
         Routine,
         Exercise,
-        Progress
+        Progress,
+        ApiKey,
     ],
     logging: true,
     synchronize: true, // Solo en desarrollo. No lo uses en producción.

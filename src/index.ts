@@ -16,6 +16,7 @@ import { requestLogger } from './middlewares/requestLogger.middleware.js';
 import logger from './utils/logger.utils.js';
 import { errorHandler } from './middlewares/errorHandler.middleware.js';
 import { Authenticated } from './middlewares/authenticate.middleware.js';
+import validateApiKey from './middlewares/accessApp.middleware.js';
 
 (async () => {
   try {
@@ -46,6 +47,7 @@ app.use(express.text());
 
 
 
+app.use(validateApiKey);
 
 
 app.use('/auth', Auth);
